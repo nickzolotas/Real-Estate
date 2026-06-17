@@ -1,0 +1,27 @@
+:root{
+    --primary-color: #FF9D3F;
+    --secondary-color: #C44200;
+    --white: #eaeaea;
+    --gray: #d9d9d9;
+    --dark-gray: #262626;
+    --black: #000000;
+    --light-orange: #ffe7d0;
+    --text-orange: #c44200;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./assets/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+}
+
+body{
+    font-family: 'Inter', sans-serif;
+    background-color: var(--white);
+    color: var(--dark-gray);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

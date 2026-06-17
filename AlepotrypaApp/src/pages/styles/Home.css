@@ -1,0 +1,141 @@
+.StartBar {
+    min-height: 25vh;
+    padding: 2rem;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 30% 50%;
+    box-sizing: border-box;
+}
+
+.StartBar .logo {
+    width: 90%;
+    height: auto;
+}
+
+.title {
+    font-size: 1.5rem;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-align: center;
+}
+
+.title h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.title h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px; /* Limits width on desktop screens */
+}
+
+.search-container .search {
+    background-color: var(--white);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    width: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.search-container input {
+    border: none;
+    outline: none;
+    height: 2.5rem;
+    background-color: transparent;
+    color: black;
+    font-size: 1rem;
+}
+
+.search-icon {
+    color: #666;
+    cursor: pointer;
+}
+
+.search-container .filter {
+    width: 100%;
+    display: flex;
+    gap: 1rem; /* Creates clean spacing between dropdowns */
+    justify-content: space-between;
+}
+
+.search-container select {
+    background-color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    height: 3rem;
+    width: 50%; /* Splits the space equally */
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.HomePage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.Home {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.op{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: var(--white);
+    width: 90%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+}
+
+@media (max-width: 860px) {
+    :root {
+        --direction: column;
+    }
+    .StartBar .logo {
+        display: none;
+    }
+    .StartBar {    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .Home{
+        display: flex;
+        flex-direction: column;
+    }
+}
