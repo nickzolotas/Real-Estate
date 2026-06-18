@@ -1,66 +1,71 @@
-.box{
+.box {
     border-radius: 20px;
     display: grid;
-    /* grid-template-columns: repeat(auto-fit, minmax(50%, 1fr)); */
     grid-template-columns: 1fr 1fr;
     width: 100%;
-    max-width: 500px;
-    height: auto;
+    /* max-width: 500px; */
+    /* Changed height to min-height so it expands if content needs room */
+    min-height: 180px; 
     background-color: var(--light-orange);
     overflow: hidden;
     box-shadow: 0 4px 10px rgb(0, 0, 0, 0.08);
 }
 
-.item-info h1, .item-info .val{
+.item-info h1, .item-info .val {
     color: var(--text-orange);
     font-weight: bold;
 }
 
 .item-info h1 {
-    margin: 0 0 1rem 0;
-    color: var(--text-orange);
-    font-size: 1.8rem;
+    /* Reduced margin so it doesn't push elements out */
+    margin: 0 0 0.4rem 0; 
+    font-size: 1.6rem;
 }
 
 .item-info p {
     display: flex;
-    justify-content: left;
+    justify-content: flex-start; /* 'left' is invalid for justify-content */
     width: 100%;
     margin: 0.1rem 0;
     font-weight: 500;
+    font-size: 0.9rem; /* Slightly smaller text to fit nicely */
 }
 
-.item-info{
+.item-info {
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: flex-start; /* 'left' is invalid for align-items */
     justify-content: center;
-    padding-left: .5rem;
+    padding: 1rem; /* Better padding around the text */
 }
 
-.img-container{
+.img-container {
     width: 100%;
     height: 100%;
 }
 
-.img{
+.img {
     width: 100%;
     height: 100%;
-    aspect-ratio: 1/1;
     object-fit: cover;
     object-position: center;
 }
 
+/* Responsive adjustments */
 @media (max-width: 480px) {
-    .item-info{
-        font-size: 2rem;
-    }
-
     .box {
         grid-template-columns: 1fr;
+        height: auto; /* Allows the box to grow vertically when stacked */
+    }
+
+    .item-info {
+        /* Removed the huge 2rem font size */
+        padding: 1rem;
     }
     
     .img {
-        aspect-ratio: 16 / 9;
+        /* Keeps the image looking like a normal banner banner on mobile */
+        aspect-ratio: 16 / 9; 
+        height: auto;
     }
 }

@@ -1,11 +1,15 @@
 import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faPlus, faHeart, faCircleUser } from '@fortawesome/free-solid-svg-icons';
 
 import "./styles/SearchResults.css";
-import logo from "../assets/logoW.png";
 
 import Item from "./components/Item.jsx";
+import MenuIcon from './components/MenuIcon.jsx';
+import HomeIcon from './components/HomeIcon.jsx';
+import ProfileIcon from './components/ProfileIcon.jsx';
+import StarIcon from './components/StarIcon.jsx';
+// import AddIcon from './components/AddIcon.jsx'
+
+import logo from "../assets/logoW.png";
 
 const getConstructionYears = () => {
     const currentYear = new Date().getFullYear();
@@ -33,7 +37,10 @@ export default function SearchResults() {
     const floors = getFloors();
     const [sqmMin, setSqmMin] = useState('');
     const [sqmMax, setSqmMax] = useState('');
-
+    const [isOpen, setIsOpen] = useState(false);
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
     
     const generateSqmOptions = (max = 200000) => {
         const opts = [];
@@ -114,110 +121,148 @@ export default function SearchResults() {
     };
 
     return (
-        <div className="search-results">
-            <div className="filter">
-                <div className="logo-header">
-                    <img src={logo} alt="Logo" className="logo" />
+        <>
+            <div className="top-bar">
+                <div className='left'>
+                    <MenuIcon onClick={toggleMenu} />
+                    <HomeIcon />
                 </div>
-                <br></br>
-                <h1 style={{textAlign: 'center'}}>Αναζήτηση Ακινήτων</h1>
-                <br></br>
-                <label>Περιοχή/Πόλη/Νομός</label>
-                <input type="text" placeholder="Αναζήτηση περιοχής" />
-                <br></br>
-                <br></br>
-                <label>Ενοίκιο ή Αγορά</label>
-                <br></br>
-                <select>
-                    <option value="rent">Ενοίκιο</option>
-                    <option value="sell">Αγορά</option>
-                </select>
-                <br></br>
-                <br></br>
-                <label>Δωμάτια</label>
-                <br></br>
-                <select>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5+</option>
-                </select>
-                <br></br>
-                <br></br>
-                <label>Έτος Κατασκευής</label>
-                <br></br>
-                <select>
-                    {years.map((year) => (
-                        <option key={year} value={year}>{year}</option>
-                    ))}
-                </select>
-                <br></br>
-                <br></br>
-                <label>Όροφος</label>
-                <br></br>
-                <select>
-                    {floors.map((floor) => (
-                        <option key={floor} value={floor}>{formatFloorLabel(floor)}</option>
-                    ))}
-                </select>
-
-                <br></br>
-                <br></br>
-                <label>Εμβαδόν (τ.μ.)</label>
-                <div className="sqm-range">
-                    <select value={sqmMin} onChange={(e) => onMinChange(e.target.value)}>
-                        <option value="">Από</option>
-                        {sqmOptions.map((n) => (
-                            <option key={n} value={n}>{n === 200000 ? '200000+' : n}</option>
-                        ))}
-                    </select>
-                    <span style={{ margin: '0 8px' }}>—</span>
-                    <select value={sqmMax} onChange={(e) => setSqmMax(e.target.value)}>
-                        <option value="">Έως</option>
-                        {filteredMaxOptions.map((n) => (
-                            <option key={n} value={n}>{n === 200000 ? '200000+' : n}</option>
-                        ))}
-                    </select>
-                </div>
-                <br></br>
-                <br></br>
-
-                <label>Τιμή (€)</label>
-                <div className="sqm-range">
-                    <select value={priceMin} onChange={(e) => onPriceMinChange(e.target.value)}>
-                        <option value="">Από</option>
-                        {priceOptions.map((n) => (
-                            <option key={n} value={n}>{n === 100000000 ? '100,000,000+' : n.toLocaleString()}</option>
-                        ))}
-                    </select>
-                    <span style={{ margin: '0 8px' }}>—</span>
-                    <select value={priceMax} onChange={(e) => setPriceMax(e.target.value)}>
-                        <option value="">Έως</option>
-                        {filteredPriceMaxOptions.map((n) => (
-                            <option key={n} value={n}>{n === 100000000 ? '100,000,000+' : n.toLocaleString()}</option>
-                        ))}
-                    </select>
-                </div>
-                <br></br>
-                <br></br>
-                <label>Με χώρο πάρκινγκ</label>
-                <br></br>
-                <input type="checkbox" id="parking" />
-                <label htmlFor="parking">Ναι</label>
-            </div>
-            <div className="results">
-                <div className="top-bar">
-                    <FontAwesomeIcon icon={faPlus} className='btn'/>
-                    <FontAwesomeIcon icon={faHeart} className='btn'/>
-                    <FontAwesomeIcon icon={faCircleUser} className='btn'/>
-                </div>
-                <div className="results-list">
-                    <Item />
-                    <Item />
-                    <Item />
+                <div className='right'>
+                    {/* <AddIcon onClick="" className="btn"/> */}
+                    <StarIcon onClick="" className="btn" />
+                    <ProfileIcon onClick="" className="btn"/>
                 </div>
             </div>
-        </div>
+            <div className="search-results">
+                <div className={`filter ${isOpen ? "active" : ""}`}>
+                    <div className="logo-header">
+                        <img src={logo} alt="Logo" className="logo" />
+                    </div>
+                    <br></br>
+                    <h1 style={{textAlign: 'center'}}>Αναζήτηση Ακινήτων</h1>
+                    <br></br>
+                    <hr></hr>
+                    <br></br>
+                    <label>Περιοχή/Πόλη/Νομός</label>
+                    <input type="text" placeholder="Αναζήτηση περιοχής" />
+        
+                    
+                    <label>Ενοίκιο ή Αγορά</label>
+                    <br></br>
+
+                    <select>
+                        <option value="rent">Ενοίκιο</option>
+                        <option value="sell">Αγορά</option>
+                    </select>
+                    
+                    <label>Δωμάτια</label>
+                    <br></br>
+                    <select>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5+</option>
+                    </select>
+
+                    <label>Έτος Κατασκευής</label>
+                    <br></br>
+                    <select>
+                        {years.map((year) => (
+                            <option key={year} value={year}>{year}</option>
+                        ))}
+                    </select>
+
+                    <label>Όροφος</label>
+                    <br></br>
+                    <select>
+                        {floors.map((floor) => (
+                            <option key={floor} value={floor}>{formatFloorLabel(floor)}</option>
+                        ))}
+                    </select>
+
+                    <label>Εμβαδόν (τ.μ.)</label>
+                    <div className="sqm-range">
+                        <select value={sqmMin} onChange={(e) => onMinChange(e.target.value)}>
+                            <option value="">Από</option>
+                            {sqmOptions.map((n) => (
+                                <option key={n} value={n}>{n === 200000 ? '200000+' : n}</option>
+                            ))}
+                        </select>
+                        <span style={{ margin: '0 8px', color: 'white'}}>—</span>
+                        <select value={sqmMax} onChange={(e) => setSqmMax(e.target.value)}>
+                            <option value="">Έως</option>
+                            {filteredMaxOptions.map((n) => (
+                                <option key={n} value={n}>{n === 200000 ? '200000+' : n}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <label>Τιμή (€)</label>
+                    <div className="sqm-range">
+                        <select value={priceMin} onChange={(e) => onPriceMinChange(e.target.value)}>
+                            <option value="">Από</option>
+                            {priceOptions.map((n) => (
+                                <option key={n} value={n}>{n === 100000000 ? '100,000,000+' : n.toLocaleString()}</option>
+                            ))}
+                        </select>
+                        <span style={{ margin: '0 8px', color: 'white' }}>—</span>
+                        <select value={priceMax} onChange={(e) => setPriceMax(e.target.value)}>
+                            <option value="">Έως</option>
+                            {filteredPriceMaxOptions.map((n) => (
+                                <option key={n} value={n}>{n === 100000000 ? '100,000,000+' : n.toLocaleString()}</option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <label>Με χώρο πάρκινγκ</label>
+                    <br></br>
+                    <input type="checkbox" id="parking" />
+                    <label htmlFor="parking">Ναι</label>
+                    <br></br>
+                    <br></br>
+                    <button className="search-button">Αναζήτηση</button>
+                </div>
+                <div className="results">
+                    <div className="results-list">
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                        <Item />
+                    </div>
+                </div>
+            </div>
+        </>
     );
 }

@@ -4,13 +4,15 @@ import "./App.css";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import SearchResults from "./pages/SearchResults.jsx";
+import PropertyDetails from "./pages/PropertyDetails.jsx"
 
 export default function App() {
   return (
     <>
-      {/* <Home />
-      <About /> */}
-      <SearchResults />
+      {/* <Home /> */}
+      {/* <SearchResults /> */}
+      <PropertyDetails />
+      {/* <About /> */}
     </> 
   );
 }

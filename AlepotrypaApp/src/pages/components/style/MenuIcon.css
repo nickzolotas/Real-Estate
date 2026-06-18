@@ -1,0 +1,32 @@
+.menu {
+    display: none;
+    /* padding: 4px; */
+    /* margin: 20px; */
+    border-radius: 8px;
+    width: 50px;
+    height: 50px;
+    align-items: center; 
+}
+
+#made {
+  color: gray;
+  font-size: 0.75em;
+  font-weight: 400;
+  text-align: center;
+  font-family: 'Montserrat',sans-serif;
+  /* padding-top: 36px;  */
+}
+#svgator {
+  color: #A5A5A5;
+}
+#svgator:hover {
+  color: #fff;
+}
+
+
+@media (max-width: 950px) {
+    .menu{
+        display: block;
+        cursor: pointer;
+    }
+}
