@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Slider, RangeSlider } from 'rsuite';
+import 'rsuite/dist/rsuite.min.css';
 // import { Slider } from "@/components/ui/slider"
 import "./styles/PropertyDetails.css";
 import Item from "./components/Item.jsx";
@@ -108,20 +109,26 @@ export default function PropertyDetails() {
                         <button className='com'>Κλήση</button>
                         <br></br>
                         <br></br>
-                        <Slider
-      progress
-      defaultValue={50}
-      onChange={value => {
-        console.log(value);
-      }}
-    />
+                  
     
                         <label>Εναλλακτικά</label>
-                        <br></br>
-                        <button className='rec-price'>Προτείνετε Τιμή</button>
+                        <br />
+                        <div className="recommend-row">
+                            <div className="recommend-slider">
+                                <Slider
+                                    progress
+                                    defaultValue={100000}
+                                    onChange={(value) => {
+                                        console.log('Προτεινόμενη τιμή:', value);
+                                    }}
+                                    
+                                />
+                            </div>
+                            <button className='rec-price'>Προτείνετε Τιμή</button>
+                        </div>
                     </div>
-                    <br></br>
-                    <hr></hr>
+                    <br />
+                    <hr />
                     <br></br>
                     {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2000.053079529941!2d11.559118422846963!3d48.17664122404365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e767c569b4b6b%3A0x95c6ccbd78126988!2sBMW%20Museum!5e1!3m2!1sen!2sgr!4v1781747139934!5m2!1sen!2sgr" width="100%" height="300" style={{border: 0}} allowFullScreen="" loading="lazy"></iframe> */}
                     <iframe
@@ -138,6 +145,3 @@ export default function PropertyDetails() {
         </div>
     );
 }
-
-
-// export default PropertyDetails;
