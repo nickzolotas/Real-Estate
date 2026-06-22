@@ -1,0 +1,111 @@
+.login-background {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom, var(--secondary-color), var(--primary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-background .back{
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.login-background .login-container {
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.721);
+    padding: 30px;
+    width: 30vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;    
+}
+
+.forms-wrapper {
+    position: relative;
+    width: 100%;
+    flex-grow: 1; 
+}
+
+.forms-wrapper > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.forms-wrapper > :first-child {
+    transform: translateY(0);
+}
+.forms-wrapper > :last-child {
+    transform: translateY(100%);
+}
+
+.forms-wrapper.signup > :first-child {
+    transform: translateY(200%);
+}
+.forms-wrapper.signup > :last-child {
+    transform: translateY(0);
+}
+
+.login-container .logo {
+    width: auto;
+    height: 25%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    padding: 10px;
+    background-color: rgb(182, 181, 181);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    z-index: 10; /* Ensures the logo stays visually above the sliding forms */
+}
+
+.login-container .logo img{
+    width: 90%;
+    height: auto;
+}
+
+
+@media (max-Width: 1500px){
+    .login-background .login-container{
+        width: 50vw;
+    }
+}
+@media (max-Width: 900px){
+    .login-background .login-container{
+        width: 60vw;
+    }
+}
+
+@media (max-Width: 700px){
+    .login-background .login-container{
+        width: 80vw;
+    }
+}
+
+@media (max-Width: 500px){
+    .login-background .login-container{
+        width: 90vw;
+    }
+}

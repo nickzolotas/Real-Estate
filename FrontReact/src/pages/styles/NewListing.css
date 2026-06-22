@@ -1,0 +1,116 @@
+.newListing-background {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom, var(--secondary-color), var(--primary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.newListing-background .back{
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.newListing-background .newListing-container {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.721);
+    padding: 30px;
+    width: 30vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;    
+}
+
+.newListing-container .logo {
+    width: auto;
+    height: 25%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    padding: 10px;
+    background-color: rgb(182, 181, 181);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    z-index: 10;
+}
+
+.newListing-container .logo img{
+    width: 90%;
+    height: auto;
+}
+
+
+.newListing-background .newListing-container .newListing-form{
+    width: 90%;
+    height: auto;
+    border-radius: 25px;
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
+    overflow-y: scroll;
+}
+
+.newListing-form h2{
+    text-align: center;
+}
+
+.newListing-form .submit{
+    color: white;
+    background-color: black;
+    align-items: center;
+    padding: 10px 50px 10px 50px;
+    border-radius: 10px;
+    font-size: medium;
+}
+
+.newListing-form .submit:hover{
+    background-color: var(--primary-color);
+}
+
+.newListing-form .submitbtn{
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-Width: 1500px){
+    .newListing-background .newListing-container{
+        width: 50vw;
+    }
+}
+@media (max-Width: 900px){
+    .newListing-background .newListing-container{
+        width: 60vw;
+    }
+}
+
+@media (max-Width: 700px){
+    .newListing-background .newListing-container{
+        width: 80vw;
+        height: 95vh;
+    }
+}
+
+@media (max-Width: 500px){
+    .newListing-background .newListing-container{
+        width: 90vw;
+        height: 95vh;
+    }
+}
