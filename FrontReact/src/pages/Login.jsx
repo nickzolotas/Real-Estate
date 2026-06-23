@@ -7,7 +7,42 @@ import SignInForm from "./components/SignInForm.jsx"
 import logo from "../assets/logoW.png";
 
 export default function Login() {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
+
     const [showSignup, setShowSignUp] = useState(false);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Σταματάει το αυτόματο reload της σελίδας
+        setError('');
+        setSuccessMessage('');
+
+        try {
+            const response = await fetch('http://localhost:5000/CheckLogin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Κάτι πήγε στραβά');
+            }
+
+            setSuccessMessage(data.message);
+            console.log('Στοιχεία Χρήστη:', data);
+            
+
+        } catch (err) {
+            setError(err.message);
+        }
+    };
 
     return (
         <>

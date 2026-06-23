@@ -15,8 +15,8 @@ export default function App() {
       {/* <SearchResults /> */}
       {/* <PropertyDetails /> */}
       {/* <About /> */}
-      {/* <Login /> */}
-      <NewListing />
+      <Login />
+      {/* <NewListing /> */}
     </> 
   );
 }
