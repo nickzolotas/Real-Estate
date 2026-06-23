@@ -1,13 +1,9 @@
-import { useState } from 'react';
+import { useMemo } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Slider, RangeSlider } from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
 // import { Slider } from "@/components/ui/slider"
 import "./styles/PropertyDetails.css";
-import Item from "./components/Item.jsx";
-import MenuIcon from './components/MenuIcon.jsx';
-import HomeIcon from './components/HomeIcon.jsx';
-import ProfileIcon from './components/ProfileIcon.jsx';
-import StarIcon from './components/StarIcon.jsx';
 // import AddIcon from './components/AddIcon.jsx'
 
 import logo from "../assets/logoW.png";
@@ -20,23 +16,56 @@ import stairs from "../assets/icons/stairs.png"
 import demoImg from "../assets/demoHome.jpg"
 
 export default function PropertyDetails() {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const property = location.state?.property;
+    const searchFilters = location.state?.searchFilters;
+
+    const handleBack = () => {
+        if (searchFilters) {
+            navigate('/search', { state: { searchFilters } });
+        } else {
+            navigate(-1);
+        }
+    };
+
+    const infoLines = useMemo(() => {
+        if (!property) return [];
+
+        const typeLabel = property.listingType === 'RENT' ? 'Ενοικίαση' : 'Πώληση';
+        const category = property.parkingSpots != null ? 'Garage/Parking' : property.rooms != null ? 'Επαγγελματικό' : property.bedrooms != null ? 'Σπίτι' : 'Ακίνητο';
+
+        return [
+            { label: 'Κατηγορία', value: category },
+            { label: 'Τύπος', value: typeLabel },
+            { label: 'Περιοχή', value: property.city || '-' },
+            { label: 'Διεύθυνση', value: property.address || '-' },
+            { label: 'Όροφος', value: property.floor || '-' },
+            { label: 'Έτος', value: property.year || '-' },
+            { label: 'Έχει ανελκυστήρα', value: property.hasElevator ? 'Ναι' : 'Όχι' }
+        ];
+    }, [property]);
+
+    if (!property) {
+        return (
+            <div className="propertyD empty-state">
+                <div className="not-found-box">
+                    <h2>Δεν βρέθηκε ακίνητο.</h2>
+                    <p>Πατήστε επιστροφή για να δείτε τα αποτελέσματα αναζήτησης.</p>
+                    <button className="com" onClick={handleBack}>Επιστροφή</button>
+                </div>
+            </div>
+        );
+    }
+
     return(
         <div className="propertyD">
             <div className="details-top-bar">
-                <div className='details-left'>
-                    <HomeIcon />
-                    <img src={logo} alt="Logo" className="logo" />
-                    <h1>Αλεπότρυπα</h1>
+                <div className="details-left">
+                    <button className="btn" onClick={handleBack}>←</button>
+                    <h1>Λεπτομέρειες Ακινήτου</h1>
                 </div>
-                <div className='right'>
-                    {/* <AddIcon onClick="" className="btn"/> */}
-                    <StarIcon onClick="" className="btn" />
-                    <ProfileIcon onClick="" className="btn"/>
-                </div>
-                
             </div>
-            
-            
             <div className="details">
                 <div className='details-l'>
                     <div className="detailsImage">
@@ -45,26 +74,13 @@ export default function PropertyDetails() {
                         <img src={demoImg} alt="Μικρή εικόνα 3" style={{ gridArea: 'img3' }} />
                     </div>
                     <div className='detailsTitle'>
-                        <h1>Μονοκατοικία 850m<sup>2</sup></h1>
-                        <h1>Price: 100.000€</h1>
+                        <h1>{property.title || `${property.city || ''} ${property.address || ''}`}</h1>
+                        <h1>Τιμή: {property.price?.toLocaleString('el-GR') || '-'}€</h1>
                     </div>
                     <div className='container-detailsText'>
                         <h2>Περιγραφή</h2>
                         <div className='detailsText'>
-                            <p>Αυτή η πολυτελής μονοκατοικία 2 επιπέδων βρίσκεται στην υπέροχη περιοχή της Φιλοθέης και είναι
-                                διαθέσιμη προς πώληση. Η συνολική της επιφάνεια είναι 650 τ.μ. και βρίσκεται σε οικόπεδο 850 τ.μ. 
-                                Αποτελείται από 5 υπνοδωμάτια, 5 σαλόνια, 5 κουζίνες, 5 μπάνια και ένα WC. Η κατασκευή της
-                                ολοκληρώθηκε το 2010 και διαθέτει ενεργειακή κλάση Α. 
-
-                                Επίσης, διαθέτει θέρμανση fan coil, θέα σε
-                                ανοιχτό ορίζοντα, κουφώματα αλουμινίου, πόρτα ασφαλείας, ανελκυστήρα, πάρκινγκ, αποθήκη
-                                150 τ.μ., κήπο, jacuzzi, πισίνα, A/C, συναγερμό, ηλεκτρικές συσκευές, σίτες, τριπλά τζάμια, ηλιακό
-                                θερμοσίφωνα, BBQ, Roof Garden, δορυφορική κεραία, θυροτηλεόραση, νυχτερινό ρεύμα και εσωτερική
-                                σκάλα. 
-
-                                Αυτή η μοναδική ιδιοκτησία προσφέρει όχι μόνο πολυτέλεια, αλλά και όμορφη θέα και πλήρη 
-                                εξυπηρέτηση των αναγκών σας.
-                            </p>
+                            <p>{property.description || 'Δεν υπάρχει διαθέσιμη περιγραφή για αυτό το ακίνητο.'}</p>
                         </div>
                     </div>
                 </div>
@@ -72,28 +88,28 @@ export default function PropertyDetails() {
                     <div className='small-details'>
                         <div className='line'>
                             <img src={bed} alt="" />
-                            <p>Υπνοδωμάτια: </p>
-                            <span>value</span>
+                            <p>Υπνοδωμάτια / Θέσεις: </p>
+                            <span>{property.bedrooms ?? property.rooms ?? property.parkingSpots ?? '-'}</span>
                         </div>
                         <div className='line'>
                             <img src={bathroom} alt="" />
-                            <p>Υπνοδωμάτια: </p>
-                            <span>value</span>
+                            <p>Μπάνια: </p>
+                            <span>{property.bathrooms ?? '-'}</span>
                         </div>
                         <div className='line'>
                             <img src={build} alt="" />
-                            <p>Υπνοδωμάτια: </p>
-                            <span>value</span>
+                            <p>Εμβαδόν: </p>
+                            <span>{property.size ? `${property.size} τ.μ.` : '-'}</span>
                         </div>
                         <div className='line'>
                             <img src={distance} alt="" />
-                            <p>Υπνοδωμάτια: </p>
-                            <span>value</span>
+                            <p>Διεύθυνση: </p>
+                            <span>{property.address || property.city || '-'}</span>
                         </div>
                         <div className='line'>
                             <img src={stairs} alt="" />
-                            <p>Υπνοδωμάτια: </p>
-                            <span>value</span>
+                            <p>Όροφος: </p>
+                            <span>{property.floor || '-'}</span>
                         </div>
                     </div>
                     <hr></hr>

@@ -81,6 +81,26 @@ app.post('/api/node/search', async (req, res) => {
     }
 });
 
+app.post('/api/node/new-listing', async (req, res) => {
+    try {
+        const listingData = req.body;
+
+        const javaResponse = await fetch('http://localhost:8081/api/listings/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(listingData)
+        });
+
+        const data = await javaResponse.json();
+        res.status(javaResponse.status).json(data);
+    } catch (error) {
+        console.error("Σφάλμα κατά την αποστολή νέας αγγελίας:", error);
+        res.status(500).json({ error: "Internal Server Error κατά την αποστολή της νέας αγγελίας" });
+    }
+});
+
 
 
 

@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom'; // ⚠️ Χρειάζεται για να πάρουμε τα δεδομένα από την προηγούμενη σελίδα
+import { useLocation, useNavigate } from 'react-router-dom'; // ⚠️ Χρειάζεται για να πάρουμε τα δεδομένα από την προηγούμενη σελίδα
 import "./styles/SearchResults.css";
 
 import Item from "./components/Item.jsx";
 import MenuIcon from './components/MenuIcon.jsx';
-import HomeIcon from './components/HomeIcon.jsx';
-import ProfileIcon from './components/ProfileIcon.jsx';
-import StarIcon from './components/StarIcon.jsx';
 import logo from "../assets/logoW.png";
 
 const getConstructionYears = () => {
@@ -35,23 +32,125 @@ export default function SearchResults() {
     // --- 1. States για τη διαχείριση των αποτελεσμάτων ---
     const [listings, setListings] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
+    const [loggedInUser, setLoggedInUser] = useState(null);
+    const [favoriteIds, setFavoriteIds] = useState([]);
 
     // --- 2. States για όλα τα φίλτρα του Sidebar ---
+    const navigate = useNavigate();
     const [location, setLocation] = useState('');
     const [filterType, setFilterType] = useState('rent');
-    const [rooms, setRooms] = useState('1');
-    const [year, setYear] = useState('2024');
-    const [floor, setFloor] = useState('0');
+    const [category, setCategory] = useState('home');
+    const [rooms, setRooms] = useState('');
+    const [year, setYear] = useState('');
+    const [floor, setFloor] = useState('');
     const [sqmMin, setSqmMin] = useState('');
     const [sqmMax, setSqmMax] = useState('');
     const [priceMin, setPriceMin] = useState('');
     const [priceMax, setPriceMax] = useState('');
     const [hasParking, setHasParking] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
-    // 3. Μόλις φορτώσει η σελίδα, έλεγξε αν ήρθαν ήδη δεδομένα από την αρχική σελίδα Home
+    const fetchListings = async (filters) => {
+        if (!filters.filterType || !filters.category) {
+            setErrorMessage('Ο τύπος της αγοράς και η ιδιότητα είναι υποχρεωτικά φίλτρα.');
+            setListings([]);
+            return;
+        }
+
+        setErrorMessage('');
+
+        try {
+            const response = await fetch('http://localhost:5000/api/node/search', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(filters),
+            });
+
+            const data = await response.json();
+            if (Array.isArray(data)) {
+                setListings(data);
+            } else {
+                setListings([]);
+            }
+        } catch (error) {
+            console.error("Σφάλμα Sidebar αναζήτησης:", error);
+            setErrorMessage('Υπήρξε σφάλμα κατά τη λήψη των αποτελεσμάτων.');
+            setListings([]);
+        }
+    };
+
+    const getFavoriteStorageKey = (user) => `favorites_${user?.email || 'guest'}`;
+    const loadFavorites = (user) => {
+        if (!user) return [];
+        const stored = localStorage.getItem(getFavoriteStorageKey(user));
+        return stored ? JSON.parse(stored) : [];
+    };
+
+    const saveFavorites = (user, items) => {
+        if (!user) return;
+        localStorage.setItem(getFavoriteStorageKey(user), JSON.stringify(items));
+    };
+
+    const handleFavorite = (item) => {
+        if (!loggedInUser) {
+            navigate('/login');
+            return;
+        }
+
+        const currentFavorites = loadFavorites(loggedInUser);
+        if (currentFavorites.some((favorite) => favorite.id === item.id)) {
+            return;
+        }
+
+        const updated = [...currentFavorites, item];
+        saveFavorites(loggedInUser, updated);
+        setFavoriteIds(updated.map((favorite) => favorite.id));
+    };
+
     useEffect(() => {
-        if (routerLocation.state && routerLocation.state.results) {
-            setListings(routerLocation.state.results);
+        const storedUser = localStorage.getItem('loggedInUser');
+        const parsedUser = storedUser ? JSON.parse(storedUser) : null;
+        setLoggedInUser(parsedUser);
+    }, []);
+
+    useEffect(() => {
+        if (!loggedInUser) {
+            setFavoriteIds([]);
+            return;
+        }
+
+        const favorites = loadFavorites(loggedInUser);
+        setFavoriteIds(favorites.map((favorite) => favorite.id));
+    }, [loggedInUser]);
+
+    useEffect(() => {
+        if (routerLocation.state && routerLocation.state.searchFilters) {
+            const filters = routerLocation.state.searchFilters;
+            setLocation(filters.location || '');
+            setFilterType(filters.filterType || 'rent');
+            setCategory(filters.category || 'home');
+            setRooms(filters.rooms || '');
+            setYear(filters.year || '');
+            setFloor(filters.floor || '');
+            setSqmMin(filters.sqmMin || '');
+            setSqmMax(filters.sqmMax || '');
+            setPriceMin(filters.priceMin || '');
+            setPriceMax(filters.priceMax || '');
+            setHasParking(filters.hasParking || false);
+
+            fetchListings({
+                location: filters.location || '',
+                filterType: filters.filterType || 'rent',
+                category: filters.category || 'home',
+                rooms: filters.rooms || '',
+                year: filters.year || '',
+                floor: filters.floor || '',
+                sqmMin: filters.sqmMin || '',
+                sqmMax: filters.sqmMax || '',
+                priceMin: filters.priceMin || '',
+                priceMax: filters.priceMax || '',
+                hasParking: filters.hasParking || false
+            });
         }
     }, [routerLocation.state]);
 
@@ -59,11 +158,11 @@ export default function SearchResults() {
         setIsOpen(!isOpen);
     };
     
-    // --- 4. Η συνάρτηση αναζήτησης από το Sidebar ---
-    const handleSidebarSearch = async () => {
-        const searchFilters = {
+    const handleItemClick = (item) => {
+        const currentSearchFilters = {
             location,
             filterType,
+            category,
             rooms,
             year,
             floor,
@@ -74,20 +173,31 @@ export default function SearchResults() {
             hasParking
         };
 
-        try {
-            const response = await fetch('http://localhost:5000/api/test', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(searchFilters),
-            });
-
-            const data = await response.json();
-            if (Array.isArray(data)) {
-                setListings(data); // Αποθήκευση των νέων αποτελεσμάτων
+        navigate(`/property/${item.id}`, {
+            state: {
+                property: item,
+                searchFilters: currentSearchFilters
             }
-        } catch (error) {
-            console.error("Σφάλμα Sidebar αναζήτησης:", error);
-        }
+        });
+    };
+
+    // --- 4. Η συνάρτηση αναζήτησης από το Sidebar ---
+    const handleSidebarSearch = () => {
+        const searchFilters = {
+            location,
+            filterType,
+            category,
+            rooms,
+            year,
+            floor,
+            sqmMin,
+            sqmMax,
+            priceMin,
+            priceMax,
+            hasParking
+        };
+
+        fetchListings(searchFilters);
     };
 
     const generateSqmOptions = (max = 200000) => {
@@ -157,16 +267,6 @@ export default function SearchResults() {
 
     return (
         <>
-            <div className="top-bar">
-                <div className='left'>
-                    <MenuIcon onClick={toggleMenu} />
-                    <HomeIcon />
-                </div>
-                <div className='right'>
-                    <StarIcon onClick={() => {}} className="btn" />
-                    <ProfileIcon onClick={() => {}} className="btn"/>
-                </div>
-            </div>
             <div className="search-results">
                 <div className={`filter ${isOpen ? "active" : ""}`}>
                     <div className="logo-header">
@@ -191,10 +291,19 @@ export default function SearchResults() {
                         <option value="rent">Ενοίκιο</option>
                         <option value="sell">Αγορά</option>
                     </select>
+
+                    <label>Ιδιότητα Ακινήτου</label>
+                    <br></br>
+                    <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                        <option value="home">Σπίτι</option>
+                        <option value="business">Επιχείρηση</option>
+                        <option value="garage">Garage/Parking</option>
+                    </select>
                     
                     <label>Δωμάτια</label>
                     <br></br>
                     <select value={rooms} onChange={(e) => setRooms(e.target.value)}>
+                        <option value="">Όλα</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -205,6 +314,7 @@ export default function SearchResults() {
                     <label>Έτος Κατασκευής</label>
                     <br></br>
                     <select value={year} onChange={(e) => setYear(e.target.value)}>
+                        <option value="">Όλα</option>
                         {years.map((y) => (
                             <option key={y} value={y}>{y}</option>
                         ))}
@@ -213,6 +323,7 @@ export default function SearchResults() {
                     <label>Όροφος</label>
                     <br></br>
                     <select value={floor} onChange={(e) => setFloor(e.target.value)}>
+                        <option value="">Όλοι</option>
                         {floors.map((f) => (
                             <option key={f} value={f}>{formatFloorLabel(f)}</option>
                         ))}
@@ -263,6 +374,9 @@ export default function SearchResults() {
                     <br></br>
                     <br></br>
                     {/* Προσθήκη onClick για να εκτελείται η αναζήτηση */}
+                    {errorMessage && (
+                        <div className="error-message">{errorMessage}</div>
+                    )}
                     <button type="button" className="search-button" onClick={handleSidebarSearch}>Αναζήτηση</button>
                 </div>
                 <div className="results">
@@ -270,12 +384,18 @@ export default function SearchResults() {
                         {/* 5. Δυναμικό Map: Αν υπάρχουν αγγελίες στη βάση, τις δείχνει, αλλιώς γράφει ένα μήνυμα */}
                         {listings.length > 0 ? (
                             listings.map((item, index) => (
-                                <Item key={item.id || index} data={item} />
+                                <Item
+                                    key={item.id || index}
+                                    data={item}
+                                    onClick={() => handleItemClick(item)}
+                                    onFavorite={() => handleFavorite(item)}
+                                    isFavorite={favoriteIds.includes(item.id)}
+                                />
                             ))
                         ) : (
-                            <p style={{ color: 'white', textAlign: 'center', width: '100%', gridColumn: '1/-1' }}>
+                            <h5 style={{ color: 'black', textAlign: 'center', width: '100%', gridColumn: '1/-1' }}>
                                 Δεν βρέθηκαν ακίνητα. Δοκιμάστε να αλλάξετε τα φίλτρα αναζήτησης.
-                            </p>
+                            </h5>
                         )}
                     </div>
                 </div>

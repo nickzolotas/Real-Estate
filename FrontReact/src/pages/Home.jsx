@@ -18,26 +18,7 @@ export default function Home() {
         e.preventDefault();
 
         const searchData = { location, filterType, category };
-
-        try {
-            // Χτυπάμε το σωστό endpoint του Node
-            const response = await fetch('http://localhost:5000/api/node/search', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(searchData),
-            });
-
-            const data = await response.json();
-            console.log("Απάντηση από τον Node:", data);
-            
-            // 🚀 Πλοήγηση στη σελίδα αποτελεσμάτων κουβαλώντας τα δεδομένα
-            navigate('/search', { state: { results: data } });
-            
-        } catch (error) {
-            console.error("Σφάλμα Αναζήτησης:", error);
-        }
+        navigate('/search', { state: { searchFilters: searchData } });
     };
 
     return (

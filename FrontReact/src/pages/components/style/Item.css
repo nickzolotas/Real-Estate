@@ -11,6 +11,16 @@
     box-shadow: 0 4px 10px rgb(0, 0, 0, 0.08);
 }
 
+.item-card {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+}
+
 .item-info h1, .item-info .val {
     color: var(--text-orange);
     font-weight: bold;
@@ -37,6 +47,28 @@
     align-items: flex-start; /* 'left' is invalid for align-items */
     justify-content: center;
     padding: 1rem; /* Better padding around the text */
+}
+
+.favorite-button {
+    width: 100%;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 14px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.85rem 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.favorite-button:hover {
+    transform: translateY(-1px);
+    background-color: #ff8c00;
+}
+
+.favorite-button.active {
+    background-color: #444;
 }
 
 .img-container {

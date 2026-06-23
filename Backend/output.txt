@@ -1,0 +1,711 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------< com.example:backend >-------------------------
+[INFO] Building  0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:4.1.0:run (default-cli) > test-compile @ backend >>>
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ backend ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ backend ---
+[INFO] skip non existing resourceDirectory /home/stel/Desktop/Real-Estate/Backend/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] <<< spring-boot:4.1.0:run (default-cli) < test-compile @ backend <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:4.1.0:run (default-cli) @ backend ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.0)
+
+2026-06-23T21:33:03.127+03:00  INFO 542898 --- [backend] [           main] com.backend.BackendApplication           : Starting BackendApplication using Java 26.0.1 with PID 542898 (/home/stel/Desktop/Real-Estate/Backend/target/classes started by stel in /home/stel/Desktop/Real-Estate/Backend)
+2026-06-23T21:33:03.130+03:00  INFO 542898 --- [backend] [           main] com.backend.BackendApplication           : No active profile set, falling back to 1 default profile: "default"
+2026-06-23T21:33:03.415+03:00  INFO 542898 --- [backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-23T21:33:03.443+03:00  INFO 542898 --- [backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 5 JPA repository interfaces.
+2026-06-23T21:33:03.642+03:00  INFO 542898 --- [backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-06-23T21:33:03.650+03:00  INFO 542898 --- [backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-23T21:33:03.650+03:00  INFO 542898 --- [backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-06-23T21:33:03.669+03:00  INFO 542898 --- [backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 519 ms
+2026-06-23T21:33:03.753+03:00  INFO 542898 --- [backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-23T21:33:03.773+03:00  INFO 542898 --- [backend] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
+2026-06-23T21:33:03.957+03:00  INFO 542898 --- [backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-23T21:33:03.972+03:00  INFO 542898 --- [backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-23T21:33:04.064+03:00  INFO 542898 --- [backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./appdb user=SA
+2026-06-23T21:33:04.065+03:00  INFO 542898 --- [backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-23T21:33:04.094+03:00  INFO 542898 --- [backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./appdb]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: APPDB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-23T21:33:04.155+03:00  WARN 542898 --- [backend] [           main] org.hibernate.orm.deprecation            : HHH90000033: Encountered use of deprecated annotation [interface jakarta.persistence.Temporal] at com.backend.models.User.birthday.
+Hibernate: create global temporary table HT_listing(id bigint not null, primary key (id)) transactional
+Hibernate: create global temporary table HTE_listing(hasElevator boolean, size integer, year integer, HTE_IDENTITY bigint generated by default as identity, Id bigint, price float(53), address varchar(255), city varchar(255), description TEXT, floor varchar(255), municipality varchar(255), status varchar(255), title varchar(255), listingType enum ('BUY','RENT'), primary key (HTE_IDENTITY)) transactional
+Hibernate: create global temporary table HTE_business(bathrooms integer, hasElevator boolean, rooms integer, size integer, year integer, HTE_IDENTITY bigint generated by default as identity, Id bigint, price float(53), address varchar(255), city varchar(255), description TEXT, floor varchar(255), heatingType varchar(255), municipality varchar(255), status varchar(255), title varchar(255), listingType enum ('BUY','RENT'), primary key (HTE_IDENTITY)) transactional
+Hibernate: create global temporary table HT_users(id bigint not null, primary key (id)) transactional
+Hibernate: create global temporary table HTE_users(birthday date, role char(1), HTE_IDENTITY bigint generated by default as identity, id bigint, email varchar(255), name varchar(255), passHash varchar(255), phone varchar(255), surname varchar(255), userName varchar(255), primary key (HTE_IDENTITY)) transactional
+Hibernate: create global temporary table HTE_buyer(birthday date, role char(1), HTE_IDENTITY bigint generated by default as identity, id bigint, email varchar(255), name varchar(255), passHash varchar(255), phone varchar(255), surname varchar(255), userName varchar(255), primary key (HTE_IDENTITY)) transactional
+Hibernate: create global temporary table HTE_home(bathrooms integer, bedrooms integer, hasElevator boolean, size integer, year integer, HTE_IDENTITY bigint generated by default as identity, Id bigint, price float(53), address varchar(255), city varchar(255), description TEXT, floor varchar(255), heatingType varchar(255), municipality varchar(255), status varchar(255), title varchar(255), listingType enum ('BUY','RENT'), primary key (HTE_IDENTITY)) transactional
+Hibernate: create global temporary table HTE_parking(hasElevator boolean, heightLimit integer, parkingSpots integer, size integer, widthLimit integer, year integer, HTE_IDENTITY bigint generated by default as identity, Id bigint, price float(53), address varchar(255), city varchar(255), description TEXT, floor varchar(255), municipality varchar(255), status varchar(255), title varchar(255), listingType enum ('BUY','RENT'), primary key (HTE_IDENTITY)) transactional
+Hibernate: create global temporary table HTE_admin(birthday date, role char(1), HTE_IDENTITY bigint generated by default as identity, id bigint, adminKey varchar(255), email varchar(255), name varchar(255), passHash varchar(255), phone varchar(255), surname varchar(255), userName varchar(255), primary key (HTE_IDENTITY)) transactional
+Hibernate: create global temporary table HTE_seller(birthday date, role char(1), HTE_IDENTITY bigint generated by default as identity, id bigint, rating float(53), email varchar(255), iBan varchar(255), name varchar(255), passHash varchar(255), phone varchar(255), surname varchar(255), taxId varchar(255), userName varchar(255), primary key (HTE_IDENTITY)) transactional
+Hibernate: create global temporary table HTE_support(birthday date, role char(1), HTE_IDENTITY bigint generated by default as identity, id bigint, category varchar(255), email varchar(255), name varchar(255), passHash varchar(255), phone varchar(255), surname varchar(255), userName varchar(255), primary key (HTE_IDENTITY)) transactional
+2026-06-23T21:33:04.618+03:00  INFO 542898 --- [backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists admin cascade 
+Hibernate: drop table if exists business cascade 
+Hibernate: drop table if exists buyer cascade 
+Hibernate: drop table if exists favorite cascade 
+Hibernate: drop table if exists home cascade 
+Hibernate: drop table if exists image cascade 
+Hibernate: drop table if exists listing cascade 
+Hibernate: drop table if exists parking cascade 
+Hibernate: drop table if exists rating cascade 
+Hibernate: drop table if exists seller cascade 
+Hibernate: drop table if exists support cascade 
+Hibernate: drop table if exists users cascade 
+Hibernate: create table admin (id bigint not null, admin_key varchar(255), primary key (id))
+Hibernate: create table business (bathrooms integer not null, rooms integer not null, id bigint not null, heating_type varchar(255), primary key (id))
+Hibernate: create table buyer (id bigint not null, primary key (id))
+Hibernate: create table favorite (id bigint generated by default as identity, listing_id bigint, user_id bigint, date_added varchar(255), primary key (id))
+Hibernate: create table home (bathrooms integer not null, bedrooms integer not null, id bigint not null, heating_type varchar(255), primary key (id))
+Hibernate: create table image (id bigint generated by default as identity, listing_id bigint, url_img varchar(255), primary key (id))
+Hibernate: create table listing (has_elevator boolean not null, price float(53), size integer not null, year integer not null, id bigint generated by default as identity, address varchar(255), city varchar(255), description TEXT, floor varchar(255), municipality varchar(255), status varchar(255), title varchar(255), listing_type enum ('BUY','RENT'), primary key (id))
+2026-06-23T21:33:04.634+03:00  WARN 542898 --- [backend] [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "create table listing (has_elevator boolean not null, price float(53), size integer not null, year integer not null, id bigint generated by default as identity, address varchar(255), city varchar(255), description TEXT, floor varchar(255), municipality varchar(255), status varchar(255), title varchar(255), listing_type enum ('BUY','RENT'), primary key (id))" via JDBC [Syntax error in SQL statement "create table listing (has_elevator boolean not null, price float(53), size integer not null, [*]year integer not null, id bigint generated by default as identity, address varchar(255), city varchar(255), description TEXT, floor varchar(255), municipality varchar(255), status varchar(255), title varchar(255), listing_type enum ('BUY','RENT'), primary key (id))"; expected "identifier";]
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table listing (has_elevator boolean not null, price float(53), size integer not null, year integer not null, id bigint generated by default as identity, address varchar(255), city varchar(255), description TEXT, floor varchar(255), municipality varchar(255), status varchar(255), title varchar(255), listing_type enum ('BUY','RENT'), primary key (id))" via JDBC [Syntax error in SQL statement "create table listing (has_elevator boolean not null, price float(53), size integer not null, [*]year integer not null, id bigint generated by default as identity, address varchar(255), city varchar(255), description TEXT, floor varchar(255), municipality varchar(255), status varchar(255), title varchar(255), listing_type enum ('BUY','RENT'), primary key (id))"; expected "identifier";]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:91) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:218) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.Helper.applySqlStrings(Helper.java:204) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createTables(SchemaCreatorImpl.java:404) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createSequencesTablesConstraints(SchemaCreatorImpl.java:320) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:215) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:151) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:97) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:239) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$1(SchemaManagementToolCoordinator.java:101) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1430) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:100) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:35) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:33) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:327) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryRegistry.instantiateSessionFactory(SessionFactoryRegistry.java:64) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:458) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1452) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:93) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:443) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:436) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:411) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:419) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1862) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1811) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977) ~[spring-context-7.0.8.jar:7.0.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-7.0.8.jar:7.0.8]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-4.1.0.jar:4.1.0]
+	at com.backend.BackendApplication.main(BackendApplication.java:10) ~[classes/:na]
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table listing (has_elevator boolean not null, price float(53), size integer not null, [*]year integer not null, id bigint generated by default as identity, address varchar(255), city varchar(255), description TEXT, floor varchar(255), municipality varchar(255), status varchar(255), title varchar(255), listing_type enum ('BUY','RENT'), primary key (id))"; expected "identifier"; SQL statement:
+create table listing (has_elevator boolean not null, price float(53), size integer not null, year integer not null, id bigint generated by default as identity, address varchar(255), city varchar(255), description TEXT, floor varchar(255), municipality varchar(255), status varchar(255), title varchar(255), listing_type enum ('BUY','RENT'), primary key (id)) [42001-240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.getSyntaxError(DbException.java:261) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Parser.readIdentifier(Parser.java:5568) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:8978) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8926) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Parser.parseCreate(Parser.java:6483) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Parser.parsePrepared(Parser.java:648) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Parser.parse(Parser.java:584) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Parser.parse(Parser.java:559) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Parser.prepareCommand(Parser.java:487) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:647) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:563) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1160) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.4.240.jar:2.4.240]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-7.0.2.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:86) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	... 40 common frames omitted
+
+Hibernate: create table parking (height_limit integer not null, parking_spots integer not null, width_limit integer not null, id bigint not null, primary key (id))
+Hibernate: create table rating (likes integer not null, stars integer not null, id bigint generated by default as identity, listing_id bigint, user_id bigint, comment varchar(255), primary key (id))
+Hibernate: create table seller (rating float(53), id bigint not null, i_ban varchar(255), tax_id varchar(255), primary key (id))
+Hibernate: create table support (id bigint not null, category varchar(255), primary key (id))
+Hibernate: create table users (birthday date, role char(1) not null, id bigint generated by default as identity, email varchar(255), name varchar(255), pass_hash varchar(255), phone varchar(255), surname varchar(255), user_name varchar(255), primary key (id))
+Hibernate: alter table if exists admin add constraint FKqer4e53tfnl17s22ior7fcsv8 foreign key (id) references users
+Hibernate: alter table if exists business add constraint FKlcdr4rjd04en1gxkky41ugkup foreign key (id) references listing
+2026-06-23T21:33:04.650+03:00  WARN 542898 --- [backend] [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists business add constraint FKlcdr4rjd04en1gxkky41ugkup foreign key (id) references listing" via JDBC [Table "LISTING" not found;]
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists business add constraint FKlcdr4rjd04en1gxkky41ugkup foreign key (id) references listing" via JDBC [Table "LISTING" not found;]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:91) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:218) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.Helper.applySqlStrings(Helper.java:204) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createForeignKeys(SchemaCreatorImpl.java:281) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:227) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:151) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:97) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:239) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$1(SchemaManagementToolCoordinator.java:101) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1430) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:100) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:35) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:33) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:327) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryRegistry.instantiateSessionFactory(SessionFactoryRegistry.java:64) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:458) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1452) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:93) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:443) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:436) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:411) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:419) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1862) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1811) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977) ~[spring-context-7.0.8.jar:7.0.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-7.0.8.jar:7.0.8]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-4.1.0.jar:4.1.0]
+	at com.backend.BackendApplication.main(BackendApplication.java:10) ~[classes/:na]
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LISTING" not found; SQL statement:
+alter table if exists business add constraint FKlcdr4rjd04en1gxkky41ugkup foreign key (id) references listing [42102-240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:198) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Command.executeUpdate(Command.java:306) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Command.executeUpdate(Command.java:250) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.4.240.jar:2.4.240]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-7.0.2.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:86) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	... 39 common frames omitted
+
+Hibernate: alter table if exists buyer add constraint FKdrbbblbghdh2e021qstpy3kv4 foreign key (id) references users
+Hibernate: alter table if exists favorite add constraint FKb733xt4hngieiq1sb6h8u2xo1 foreign key (listing_id) references listing
+2026-06-23T21:33:04.651+03:00  WARN 542898 --- [backend] [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists favorite add constraint FKb733xt4hngieiq1sb6h8u2xo1 foreign key (listing_id) references listing" via JDBC [Table "LISTING" not found;]
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists favorite add constraint FKb733xt4hngieiq1sb6h8u2xo1 foreign key (listing_id) references listing" via JDBC [Table "LISTING" not found;]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:91) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:218) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.Helper.applySqlStrings(Helper.java:204) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createForeignKeys(SchemaCreatorImpl.java:281) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:227) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:151) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:97) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:239) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$1(SchemaManagementToolCoordinator.java:101) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1430) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:100) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:35) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:33) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:327) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryRegistry.instantiateSessionFactory(SessionFactoryRegistry.java:64) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:458) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1452) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:93) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:443) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:436) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:411) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:419) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1862) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1811) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977) ~[spring-context-7.0.8.jar:7.0.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-7.0.8.jar:7.0.8]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-4.1.0.jar:4.1.0]
+	at com.backend.BackendApplication.main(BackendApplication.java:10) ~[classes/:na]
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LISTING" not found; SQL statement:
+alter table if exists favorite add constraint FKb733xt4hngieiq1sb6h8u2xo1 foreign key (listing_id) references listing [42102-240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:198) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Command.executeUpdate(Command.java:306) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Command.executeUpdate(Command.java:250) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.4.240.jar:2.4.240]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-7.0.2.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:86) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	... 39 common frames omitted
+
+Hibernate: alter table if exists favorite add constraint FKa2lwa7bjrnbti5v12mga2et1y foreign key (user_id) references users
+Hibernate: alter table if exists home add constraint FK7stpfymtr6qqxscxvcrgodhpi foreign key (id) references listing
+2026-06-23T21:33:04.653+03:00  WARN 542898 --- [backend] [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists home add constraint FK7stpfymtr6qqxscxvcrgodhpi foreign key (id) references listing" via JDBC [Table "LISTING" not found;]
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists home add constraint FK7stpfymtr6qqxscxvcrgodhpi foreign key (id) references listing" via JDBC [Table "LISTING" not found;]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:91) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:218) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.Helper.applySqlStrings(Helper.java:204) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createForeignKeys(SchemaCreatorImpl.java:281) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:227) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:151) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:97) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:239) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$1(SchemaManagementToolCoordinator.java:101) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1430) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:100) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:35) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:33) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:327) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryRegistry.instantiateSessionFactory(SessionFactoryRegistry.java:64) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:458) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1452) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:93) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:443) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:436) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:411) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:419) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1862) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1811) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977) ~[spring-context-7.0.8.jar:7.0.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-7.0.8.jar:7.0.8]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-4.1.0.jar:4.1.0]
+	at com.backend.BackendApplication.main(BackendApplication.java:10) ~[classes/:na]
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LISTING" not found; SQL statement:
+alter table if exists home add constraint FK7stpfymtr6qqxscxvcrgodhpi foreign key (id) references listing [42102-240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:198) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Command.executeUpdate(Command.java:306) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Command.executeUpdate(Command.java:250) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.4.240.jar:2.4.240]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-7.0.2.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:86) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	... 39 common frames omitted
+
+Hibernate: alter table if exists image add constraint FKmbif9qcs399kpy1vuy6y32ypi foreign key (listing_id) references listing
+2026-06-23T21:33:04.654+03:00  WARN 542898 --- [backend] [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists image add constraint FKmbif9qcs399kpy1vuy6y32ypi foreign key (listing_id) references listing" via JDBC [Table "LISTING" not found;]
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists image add constraint FKmbif9qcs399kpy1vuy6y32ypi foreign key (listing_id) references listing" via JDBC [Table "LISTING" not found;]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:91) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:218) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.Helper.applySqlStrings(Helper.java:204) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createForeignKeys(SchemaCreatorImpl.java:281) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:227) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:151) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:97) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:239) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$1(SchemaManagementToolCoordinator.java:101) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1430) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:100) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:35) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:33) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:327) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryRegistry.instantiateSessionFactory(SessionFactoryRegistry.java:64) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:458) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1452) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:93) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:443) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:436) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:411) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:419) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1862) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1811) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977) ~[spring-context-7.0.8.jar:7.0.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-7.0.8.jar:7.0.8]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-4.1.0.jar:4.1.0]
+	at com.backend.BackendApplication.main(BackendApplication.java:10) ~[classes/:na]
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LISTING" not found; SQL statement:
+alter table if exists image add constraint FKmbif9qcs399kpy1vuy6y32ypi foreign key (listing_id) references listing [42102-240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:198) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Command.executeUpdate(Command.java:306) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Command.executeUpdate(Command.java:250) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.4.240.jar:2.4.240]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-7.0.2.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:86) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	... 39 common frames omitted
+
+Hibernate: alter table if exists parking add constraint FKapgb51fvdjyxd200r8t6uerai foreign key (id) references listing
+2026-06-23T21:33:04.654+03:00  WARN 542898 --- [backend] [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists parking add constraint FKapgb51fvdjyxd200r8t6uerai foreign key (id) references listing" via JDBC [Table "LISTING" not found;]
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists parking add constraint FKapgb51fvdjyxd200r8t6uerai foreign key (id) references listing" via JDBC [Table "LISTING" not found;]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:91) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:218) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.Helper.applySqlStrings(Helper.java:204) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createForeignKeys(SchemaCreatorImpl.java:281) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:227) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:151) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:97) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:239) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$1(SchemaManagementToolCoordinator.java:101) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1430) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:100) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:35) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:33) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:327) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryRegistry.instantiateSessionFactory(SessionFactoryRegistry.java:64) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:458) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1452) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:93) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:443) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:436) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:411) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:419) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1862) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1811) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977) ~[spring-context-7.0.8.jar:7.0.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-7.0.8.jar:7.0.8]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-4.1.0.jar:4.1.0]
+	at com.backend.BackendApplication.main(BackendApplication.java:10) ~[classes/:na]
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LISTING" not found; SQL statement:
+alter table if exists parking add constraint FKapgb51fvdjyxd200r8t6uerai foreign key (id) references listing [42102-240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:198) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Command.executeUpdate(Command.java:306) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Command.executeUpdate(Command.java:250) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.4.240.jar:2.4.240]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-7.0.2.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:86) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	... 39 common frames omitted
+
+Hibernate: alter table if exists rating add constraint FKmt8cblqe52a6er7xc3k4w69fu foreign key (listing_id) references listing
+2026-06-23T21:33:04.655+03:00  WARN 542898 --- [backend] [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists rating add constraint FKmt8cblqe52a6er7xc3k4w69fu foreign key (listing_id) references listing" via JDBC [Table "LISTING" not found;]
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists rating add constraint FKmt8cblqe52a6er7xc3k4w69fu foreign key (listing_id) references listing" via JDBC [Table "LISTING" not found;]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:91) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:218) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.Helper.applySqlStrings(Helper.java:204) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createForeignKeys(SchemaCreatorImpl.java:281) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:227) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:151) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:97) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:239) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$1(SchemaManagementToolCoordinator.java:101) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1430) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:100) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:35) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:33) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:327) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.internal.SessionFactoryRegistry.instantiateSessionFactory(SessionFactoryRegistry.java:64) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:458) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1452) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:93) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:443) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:436) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:411) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:419) ~[spring-orm-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1862) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1811) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977) ~[spring-context-7.0.8.jar:7.0.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-7.0.8.jar:7.0.8]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-4.1.0.jar:4.1.0]
+	at com.backend.BackendApplication.main(BackendApplication.java:10) ~[classes/:na]
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LISTING" not found; SQL statement:
+alter table if exists rating add constraint FKmt8cblqe52a6er7xc3k4w69fu foreign key (listing_id) references listing [42102-240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:198) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Command.executeUpdate(Command.java:306) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.command.Command.executeUpdate(Command.java:250) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262) ~[h2-2.4.240.jar:2.4.240]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.4.240.jar:2.4.240]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-7.0.2.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:86) ~[hibernate-core-7.4.1.Final.jar:7.4.1.Final]
+	... 39 common frames omitted
+
+Hibernate: alter table if exists rating add constraint FKf68lgbsbxl310n0jifwpfqgfh foreign key (user_id) references users
+Hibernate: alter table if exists seller add constraint FKl808pcjejdv9s50h1mgeti7ld foreign key (id) references buyer
+Hibernate: alter table if exists support add constraint FKn4ajxyra4ermnjwpvfv9miikm foreign key (id) references users
+2026-06-23T21:33:04.658+03:00  INFO 542898 --- [backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-23T21:33:04.702+03:00  INFO 542898 --- [backend] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-23T21:33:04.804+03:00  WARN 542898 --- [backend] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-23T21:33:04.960+03:00  INFO 542898 --- [backend] [           main] o.s.b.h.a.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./appdb'
+2026-06-23T21:33:04.985+03:00  INFO 542898 --- [backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-06-23T21:33:04.988+03:00  INFO 542898 --- [backend] [           main] com.backend.BackendApplication           : Started BackendApplication in 2.046 seconds (process running for 2.206)
+Hibernate: select count(*) from users u1_0
+Hibernate: insert into users (birthday,email,name,pass_hash,phone,role,surname,user_name,id) values (?,?,?,?,?,?,?,?,default)
+Hibernate: insert into admin (admin_key,id) values (?,?)
+Hibernate: insert into users (birthday,email,name,pass_hash,phone,role,surname,user_name,id) values (?,?,?,?,?,?,?,?,default)
+Hibernate: insert into buyer (id) values (?)
+Hibernate: insert into users (birthday,email,name,pass_hash,phone,role,surname,user_name,id) values (?,?,?,?,?,?,?,?,default)
+Hibernate: insert into buyer (id) values (?)
+Hibernate: insert into seller (i_ban,rating,tax_id,id) values (?,?,?,?)
+Hibernate: insert into users (birthday,email,name,pass_hash,phone,role,surname,user_name,id) values (?,?,?,?,?,?,?,?,default)
+Hibernate: insert into support (category,id) values (?,?)
+Hibernate: select count(*) from listing l1_0
+2026-06-23T21:33:05.178+03:00  WARN 542898 --- [backend] [           main] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 42102, SQLState: 42S02
+2026-06-23T21:33:05.178+03:00  WARN 542898 --- [backend] [           main] org.hibernate.orm.jdbc.error             : Table "LISTING" not found; SQL statement:
+select count(*) from listing l1_0 [42102-240]
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+CRITICAL ERROR IN DATA SEEDER:
+org.springframework.dao.InvalidDataAccessResourceUsageException: Could not prepare statement [Table "LISTING" not found; SQL statement:
+select count(*) from listing l1_0 [42102-240]] [select count(*) from listing l1_0]; SQL [select count(*) from listing l1_0]
+	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.convertHibernateAccessException(HibernateExceptionTranslator.java:156)
+	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.convertHibernateAccessException(HibernateExceptionTranslator.java:131)
+	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.translateExceptionIfPossible(HibernateExceptionTranslator.java:105)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:223)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:577)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:346)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:157)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:166)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:222)
+	at jdk.proxy2/jdk.proxy2.$Proxy129.count(Unknown Source)
+	at com.backend.config.DataSeeder.run(DataSeeder.java:104)
+	at org.springframework.boot.SpringApplication.lambda$callRunner$1(SpringApplication.java:792)
+	at org.springframework.util.function.ThrowingConsumer$1.acceptWithException(ThrowingConsumer.java:82)
+	at org.springframework.util.function.ThrowingConsumer.accept(ThrowingConsumer.java:60)
+	at org.springframework.util.function.ThrowingConsumer$1.accept(ThrowingConsumer.java:86)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:800)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:791)
+	at org.springframework.boot.SpringApplication.lambda$callRunners$0(SpringApplication.java:776)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:571)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:776)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:328)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.backend.BackendApplication.main(BackendApplication.java:10)
+Caused by: org.hibernate.exception.SQLGrammarException: Could not prepare statement [Table "LISTING" not found; SQL statement:
+select count(*) from listing l1_0 [42102-240]] [select count(*) from listing l1_0]
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:64)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:34)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:115)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:194)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.prepareQueryStatement(StatementPreparerImpl.java:157)
+	at org.hibernate.sql.exec.internal.StandardStatementCreator.createStatement(StandardStatementCreator.java:46)
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.executeQuery(DeferredResultSetAccess.java:255)
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.getResultSet(DeferredResultSetAccess.java:188)
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.<init>(JdbcValuesResultSetImpl.java:71)
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.resolveJdbcValues(JdbcSelectExecutorStandardImpl.java:422)
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.resolveJdbcValuesSource(JdbcSelectExecutorStandardImpl.java:349)
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:143)
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:100)
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.executeQuery(JdbcSelectExecutor.java:63)
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:137)
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$1(ConcreteSqmSelectQueryPlan.java:136)
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:484)
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:411)
+	at org.hibernate.query.sqm.internal.SqmQueryImpl.doList(SqmQueryImpl.java:379)
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:153)
+	at org.hibernate.query.spi.AbstractSelectionQuery.getSingleResult(AbstractSelectionQuery.java:292)
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.count(SimpleJpaRepository.java:649)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:278)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:169)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158)
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:545)
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:290)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:690)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:171)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:146)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:69)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:133)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:371)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:130)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:135)
+	... 26 more
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LISTING" not found; SQL statement:
+select count(*) from listing l1_0 [42102-240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8049)
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8020)
+	at org.h2.command.Parser.readTableOrView(Parser.java:7999)
+	at org.h2.command.Parser.readTablePrimary(Parser.java:1772)
+	at org.h2.command.Parser.readTableReference(Parser.java:2252)
+	at org.h2.command.Parser.parseSelectFromPart(Parser.java:2705)
+	at org.h2.command.Parser.parseSelect(Parser.java:2813)
+	at org.h2.command.Parser.parseQueryPrimary(Parser.java:2695)
+	at org.h2.command.Parser.parseQueryTerm(Parser.java:2550)
+	at org.h2.command.Parser.parseQueryExpressionBody(Parser.java:2529)
+	at org.h2.command.Parser.parseQueryExpressionBodyAndEndOfQuery(Parser.java:2522)
+	at org.h2.command.Parser.parseQueryExpression(Parser.java:2515)
+	at org.h2.command.Parser.parseQuery(Parser.java:2482)
+	at org.h2.command.Parser.parsePrepared(Parser.java:613)
+	at org.h2.command.Parser.parse(Parser.java:584)
+	at org.h2.command.Parser.parse(Parser.java:559)
+	at org.h2.command.Parser.prepareCommand(Parser.java:487)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:647)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:563)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1160)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:93)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:686)
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:342)
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$4.doPrepare(StatementPreparerImpl.java:155)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:183)
+	... 64 more
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+2026-06-23T21:33:13.691+03:00  INFO 542898 --- [backend] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-23T21:33:13.707+03:00  INFO 542898 --- [backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-23T21:33:13.715+03:00  INFO 542898 --- [backend] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+Hibernate: drop table if exists admin cascade 
+Hibernate: drop table if exists business cascade 
+Hibernate: drop table if exists buyer cascade 
+Hibernate: drop table if exists favorite cascade 
+Hibernate: drop table if exists home cascade 
+Hibernate: drop table if exists image cascade 
+Hibernate: drop table if exists listing cascade 
+Hibernate: drop table if exists parking cascade 
+Hibernate: drop table if exists rating cascade 
+Hibernate: drop table if exists seller cascade 
+Hibernate: drop table if exists support cascade 
+Hibernate: drop table if exists users cascade 
+2026-06-23T21:33:13.770+03:00  INFO 542898 --- [backend] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-23T21:33:13.795+03:00  INFO 542898 --- [backend] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.717 s
+[INFO] Finished at: 2026-06-23T21:33:13+03:00
+[INFO] ------------------------------------------------------------------------

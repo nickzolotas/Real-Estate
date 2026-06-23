@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Input from "./Input.jsx";
 import "./style/SignInForm.css";
 
 export default function SignInForm({ onSignup }) {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -28,8 +30,19 @@ export default function SignInForm({ onSignup }) {
                 throw new Error(data.error || 'Κάτι πήγε στραβά');
             }
 
-            setSuccessMessage(data.message);
+            const loggedUser = {
+                email,
+                role: data.role || 'B',
+                userName: data.userName || '',
+                userId: data.userId || null
+            };
+            localStorage.setItem('loggedInUser', JSON.stringify(loggedUser));
+            setSuccessMessage(data.message || 'Συνδεθήκατε με επιτυχία!');
             console.log('Στοιχεία Χρήστη από το backend:', data);
+
+            setTimeout(() => {
+                navigate('/search');
+            }, 800);
 
         } catch (err) {
             setError(err.message);
