@@ -58,6 +58,42 @@ app.post('/api/node/register', async (req, res) => {
     }
 });
 
+app.post('/api/node/search', async (req, res) => {
+    try {
+        const searchFilters = req.body; 
+        console.log("Λήφθηκαν φίλτρα από React:", searchFilters);
+
+        const javaResponse = await fetch('http://localhost:8081/api/listings/search', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(searchFilters)
+        });
+
+        const listings = await javaResponse.json();
+
+        res.json(listings);
+
+    } catch (error) {
+        console.error("Σφάλμα κατά την επικοινωνία με την Java:", error);
+        res.status(500).json({ error: "Internal Server Error στην επικοινωνία με το backend" });
+    }
+});
+
+
+
+
+
+
+
+
+
+
+app.get('/api/test', async (req, res) => {
+    res.json({ message: "Success" });
+});
+
 app.listen(PORT, () => {
     console.log(`🚀 Server is running on http://localhost:${PORT}`);
 });

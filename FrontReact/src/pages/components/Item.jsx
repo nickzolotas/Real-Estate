@@ -1,22 +1,25 @@
-import {useState} from "react";
-
+import React from "react";
 import "./style/Item.css";
-import imgDemo from "../../assets/demoHome.jpg"
+import imgDemo from "../../assets/demoHome.jpg";
 
-export default function Item() {
+// Δέχεται το prop "data" δυναμικά
+export default function Item({ data }) {
+    if (!data) return null;
+
     return (
         <div className="box">
             <div className="img-container">
-                <img src={imgDemo} alt="" className="img"/>
+                <img src={imgDemo} alt={data.title} className="img"/>
             </div>
             <div className="item-info">
-                <h1>400€</h1>
-                <p>μ<sup>2</sup>: <span className="val">1000</span></p>
-                <p>Δωμάτια: <span className="val">20</span></p>
-                <p>Όροφος: <span className="val">1</span></p>
-                <p>Έτος: <span className="val">2030</span></p>
-                <p>Γκαράζ: <span className="val">NAI</span></p>
+                {/* Εμφάνιση των πραγματικών πεδίων της Java */}
+                <h1>{data.price}€</h1>
+                <p>Τίτλος: <span className="val">{data.title}</span></p>
+                <p>μ<sup>2</sup>: <span className="val">{data.size}</span></p>
+                <p>Όροφος: <span className="val">{data.floor}</span></p>
+                <p>Έτος: <span className="val">{data.year}</span></p>
+                <p>Περιοχή: <span className="val">{data.area}</span></p>
             </div>
         </div>
-    )
+    );
 }
