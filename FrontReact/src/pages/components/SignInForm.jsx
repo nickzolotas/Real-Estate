@@ -1,38 +1,35 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Input from "./Input.jsx";
 import "./style/SignInForm.css";
 
 export default function SignInForm({ onSignup }) {
-    // 1. States για τα στοιχεία και τα μηνύματα
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const [success, setSuccess] = useState("");
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
-    // 2. Η συνάρτηση σύνδεσης
     const handleLogin = async (e) => {
-        e.preventDefault(); // Αποτρέπει το reload
-        setError("");
-        setSuccess("");
+        e.preventDefault();
+        setError('');
+        setSuccessMessage('');
 
         try {
-            const response = await fetch("http://localhost:5000/api/node/login", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password })
+            const response = await fetch('http://localhost:5000/api/node/CheckLogin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
             });
 
             const data = await response.json();
 
             if (!response.ok) {
-                throw new Error(data.error || "Απέτυχε η σύνδεση");
+                throw new Error(data.error || 'Κάτι πήγε στραβά');
             }
 
-            setSuccess(data.message);
-            console.log("Συνδέθηκες επιτυχώς! Data χρήστη:", data);
-            
-            // Εδώ αποθηκεύεις αν θες το ID ή το Role στο localStorage
-            // localStorage.setItem("userId", data.userId);
+            setSuccessMessage(data.message);
+            console.log('Στοιχεία Χρήστη από το backend:', data);
 
         } catch (err) {
             setError(err.message);
@@ -40,11 +37,11 @@ export default function SignInForm({ onSignup }) {
     };
 
     return (
-        <div className="login-form">
+        <form className="login-form" onSubmit={handleLogin}>
             <h2>Σύνδεση</h2>
             <br />
 
-            {/* Συνδέουμε το email state */}
+            {/* Σύνδεση με το state του email */}
             <Input 
                 labelText="e-mail" 
                 className="inp" 
@@ -54,7 +51,7 @@ export default function SignInForm({ onSignup }) {
             />
             <br />
 
-            {/* Συνδέουμε το password state και βάζουμε type="password" */}
+            {/* Σύνδεση με το state του κωδικού και χρήση type="password" */}
             <Input 
                 labelText="Κωδικός" 
                 className="inp" 
@@ -64,20 +61,20 @@ export default function SignInForm({ onSignup }) {
             />
             <br />
 
-            {/* Μηνύματα λάθους/επιτυχίας */}
-            {error && <p style={{ color: "red", fontSize: "14px", textAlign: "center" }}>{error}</p>}
-            {success && <p style={{ color: "green", fontSize: "14px", textAlign: "center" }}>{success}</p>}
+            {/* Εμφάνιση μηνυμάτων κάτω από τα Inputs */}
+            {error && <p style={{ color: 'red', fontSize: '14px', textAlign: 'center' }}>{error}</p>}
+            {successMessage && <p style={{ color: 'green', fontSize: '14px', textAlign: 'center' }}>{successMessage}</p>}
 
             <div className="signInbtn">
-                {/* Προσθήκη onClick για να τρέχει η συνάρτηση */}
-                <button className="signinbutton" onClick={handleLogin}>
+                {/* Το κουμπί έχει πλέον type="submit" για να ενεργοποιεί το onSubmit της φόρμας */}
+                <button type="submit" className="signinbutton">
                     <b>Σύνδεση</b>
                 </button>
 
-                <p onClick={onSignup} style={{ cursor: "pointer" }}>
+                <p onClick={onSignup} style={{ cursor: 'pointer' }}>
                     <b>Εγγραφή</b>
                 </p>
             </div>
-        </div>
+        </form>
     );
 }

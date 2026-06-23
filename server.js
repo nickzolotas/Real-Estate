@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 
-app.post('/CheckLogin', async (req, res) => {
+app.post('/api/node/CheckLogin', async (req, res) => {
     try {
         const { email, password } = req.body;
 
@@ -32,6 +32,29 @@ app.post('/CheckLogin', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Σφάλμα κατά τη σύνδεση" });
+    }
+});
+
+app.post('/api/node/register', async (req, res) => {
+    try {
+        const userData = req.body;
+
+        const javaResponse = await fetch('http://localhost:8081/api/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(userData)
+        });
+
+        const data = await javaResponse.json();
+
+        if (!javaResponse.ok) {
+            return res.status(javaResponse.status).json(data);
+        }
+
+        res.json(data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Σφάλμα server κατά την εγγραφή" });
     }
 });
 

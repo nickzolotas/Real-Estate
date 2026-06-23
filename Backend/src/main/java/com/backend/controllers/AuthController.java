@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.backend.models.Buyer;
+
 import java.util.Map;
 import java.util.Optional;
 
@@ -47,5 +49,31 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body(Map.of("error", "Λάθος κωδικός πρόσβασης!"));
         }
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody Map<String, String> registerData) {
+        String email = registerData.get("email");
+        
+        // Έλεγχος αν το email χρησιμοποιείται ήδη
+        if (userRepository.findByEmail(email).isPresent()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(Map.of("error", "Το e-mail χρησιμοποιείται ήδη!"));
+        }
+
+        // Φτιάχνουμε έναν νέο Buyer (καθώς κληρονομεί από το User)
+        Buyer newBuyer = new Buyer();
+        newBuyer.setName(registerData.get("name"));
+        newBuyer.setSurname(registerData.get("surname"));
+        newBuyer.setEmail(email);
+        newBuyer.setPhone(registerData.get("phone"));
+        newBuyer.setPassHash(registerData.get("password")); // Αποθήκευση κωδικού
+        newBuyer.setUserName(registerData.get("userName"));
+        newBuyer.setRole('B'); // 'B' για Buyer
+
+        // Αποθήκευση στο αρχείο της H2
+        userRepository.save(newBuyer);
+
+        return ResponseEntity.ok(Map.of("message", "Ο χρήστης δημιουργήθηκε επιτυχώς!"));
     }
 }
